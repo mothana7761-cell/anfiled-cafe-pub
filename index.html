@@ -1,182 +1,70 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Anfield Cafe Pub Menu</title>
 
 <style>
-:root{
-  --black:#0e0e0e;
-  --dark:#171717;
-  --red:#b40000;
-  --gold:#d4af37;
-  --white:#ffffff;
-  --soft:#f5f5f5;
-}
+:root{--black:#0b0b0b;--red:#b31814;--gold:#d4af37;--white:#fff}
 *{box-sizing:border-box}
 body{margin:0;font-family:Arial,sans-serif;background:var(--black);color:white}
 header{
   text-align:center;
-  padding:28px 15px 35px;
-  background:linear-gradient(rgba(0,0,0,.72),rgba(0,0,0,.85)),url("background.jpeg");
-  background-size:cover;
-  background-position:center;
+  padding:30px 15px 40px;
+  background:linear-gradient(rgba(0,0,0,.55),rgba(0,0,0,.82)),url("background.jpeg");
+  background-size:cover;background-position:center;
 }
-.logo{width:120px;max-width:70%;border-radius:16px;background:white;padding:6px}
-h1{margin:14px 0 6px;color:var(--gold);font-size:34px}
-.welcome{max-width:700px;margin:auto;color:#eee;line-height:1.7}
-.lang{margin-top:18px;display:flex;gap:8px;justify-content:center;flex-wrap:wrap}
+.logo{width:95px;border-radius:14px;background:white;padding:5px}
+h1{color:var(--gold);font-size:34px;margin:14px 0 8px}
+.welcome{max-width:720px;margin:auto;color:#eee;line-height:1.7}
+.lang{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-top:18px}
 .lang button{border:1px solid var(--gold);background:transparent;color:white;padding:10px 16px;border-radius:25px;font-weight:bold;cursor:pointer}
 .lang button.active{background:var(--red);border-color:var(--red)}
-.search{max-width:700px;margin:20px auto 0}
-.search input{width:100%;padding:15px 20px;border:none;border-radius:30px;font-size:16px;outline:none}
+.search{max-width:720px;margin:20px auto 0}
+.search input{width:100%;padding:15px 20px;border:none;border-radius:30px;font-size:16px}
 
-.category-grid{
-  max-width:1100px;
-  margin:25px auto;
-  padding:0 15px;
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
-  gap:14px;
+.categories{
+  max-width:1100px;margin:25px auto;padding:0 15px;
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px
 }
-.category-card{
-  height:135px;
-  border-radius:20px;
-  overflow:hidden;
-  position:relative;
-  cursor:pointer;
-  box-shadow:0 10px 25px rgba(0,0,0,.35);
-  border:1px solid rgba(255,255,255,.12);
+.cat{
+  height:135px;border-radius:20px;overflow:hidden;position:relative;cursor:pointer;
+  box-shadow:0 10px 25px rgba(0,0,0,.35)
 }
-.category-card img{width:100%;height:100%;object-fit:cover}
-.category-card::after{
-  content:"";
-  position:absolute;inset:0;
-  background:linear-gradient(rgba(0,0,0,.15),rgba(0,0,0,.78));
-}
-.category-card span{
-  position:absolute;
-  bottom:14px;
-  left:12px;
-  right:12px;
-  z-index:2;
-  color:white;
-  font-size:18px;
-  font-weight:bold;
-  text-align:center;
-}
-.category-card.active{outline:3px solid var(--gold)}
+.cat img{width:100%;height:100%;object-fit:cover}
+.cat:after{content:"";position:absolute;inset:0;background:linear-gradient(rgba(0,0,0,.1),rgba(0,0,0,.8))}
+.cat span{position:absolute;bottom:13px;left:8px;right:8px;text-align:center;z-index:2;font-weight:bold;font-size:18px}
+.cat.active{outline:3px solid var(--gold)}
 
-main{max-width:1100px;margin:auto;padding:10px 15px 40px}
-.section{display:none}
-.section.active{display:block}
-.section h2{text-align:center;color:var(--gold);font-size:30px;margin:22px 0}
-.items{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(270px,1fr));
-  gap:15px;
-}
-.item{
-  background:white;
-  color:#222;
-  padding:18px;
-  border-radius:18px;
-  border-left:5px solid var(--red);
-  box-shadow:0 8px 22px rgba(0,0,0,.3);
-}
-.item-top{display:flex;justify-content:space-between;gap:12px}
-.name{font-size:18px;font-weight:bold;line-height:1.35}
-.price{color:var(--red);font-weight:bold;white-space:nowrap}
-.desc{margin-top:8px;color:#555;font-size:14px;line-height:1.6}
+main{max-width:1100px;margin:auto;padding:10px 15px 35px}
+.section{display:none}.section.active{display:block}
+.section h2{text-align:center;color:var(--gold);font-size:30px}
+.items{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:15px}
+.item{background:white;color:#222;padding:18px;border-radius:18px;border-left:5px solid var(--red);box-shadow:0 8px 22px rgba(0,0,0,.3)}
+.top{display:flex;justify-content:space-between;gap:10px}
+.name{font-weight:bold;font-size:18px}.price{font-weight:bold;color:var(--red)}
+.desc{margin-top:8px;color:#555;line-height:1.5;font-size:14px}
 
-.contact{
-  background:#1b1b1b;
-  padding:35px 15px;
-  text-align:center;
-}
-.contact h2{color:var(--gold);margin-top:0}
-.contact-buttons{
-  max-width:900px;
-  margin:auto;
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
-  gap:12px;
-}
-.btn{
-  text-decoration:none;
-  color:white;
-  padding:14px;
-  border-radius:28px;
-  font-weight:bold;
-}
+.contact{background:#181818;padding:35px 18px;text-align:center}
+.contact h2{color:var(--gold);font-size:30px}
+.contact-buttons{max-width:700px;margin:auto;display:flex;flex-direction:column;gap:14px}
+.btn{text-decoration:none;color:white;padding:17px 20px;border-radius:30px;font-weight:bold;font-size:18px;display:block}
 .call{background:#333}.wa{background:#25D366}.review{background:var(--gold);color:#111}.map{background:var(--red)}.insta{background:#c13584}
 
-.feedback{
-  max-width:700px;
-  margin:25px auto 0;
-  background:white;
-  color:#111;
-  padding:18px;
-  border-radius:20px;
-}
-textarea{
-  width:100%;
-  height:110px;
-  padding:14px;
-  border-radius:15px;
-  border:1px solid #ddd;
-  font-size:15px;
-  resize:none;
-}
-.send{
-  width:100%;
-  margin-top:12px;
-  border:none;
-  background:var(--red);
-  color:white;
-  padding:14px;
-  border-radius:25px;
-  font-weight:bold;
-  cursor:pointer;
-}
-footer{
-  background:#000;
-  color:white;
-  text-align:center;
-  padding:28px 16px;
-  line-height:1.8;
-}
+footer{background:#000;text-align:center;padding:28px 16px;line-height:1.8}
 footer strong{color:var(--gold)}
-.float-wa{
-  position:fixed;
-  right:16px;
-  bottom:16px;
-  background:#25D366;
-  color:white;
-  text-decoration:none;
-  padding:14px 18px;
-  border-radius:40px;
-  font-weight:bold;
-  z-index:50;
-}
+.float-wa{position:fixed;right:16px;bottom:16px;background:#25D366;color:white;text-decoration:none;padding:14px 18px;border-radius:40px;font-weight:bold;z-index:30}
 [dir="rtl"] .float-wa{right:auto;left:16px}
-@media(max-width:600px){
-  .logo{width:95px}
-  h1{font-size:28px}
-  .category-card{height:120px}
-}
 </style>
 </head>
 
 <body>
 
 <header>
-  <img src="logo.jpeg" class="logo" alt="Anfield Logo">
+  <img src="logo.jpeg" class="logo">
   <h1 id="title">Anfield Cafe Pub</h1>
-  <div class="welcome" id="welcome">
-    Welcome to Anfield Cafe Pub — food, drinks, shisha and great moments in Taksim.
-  </div>
+  <div class="welcome" id="welcome">Welcome to Anfield Cafe Pub — food, drinks, shisha and great moments in Taksim.</div>
 
   <div class="lang">
     <button class="active" onclick="setLang('en',this)">English</button>
@@ -189,24 +77,17 @@ footer strong{color:var(--gold)}
   </div>
 </header>
 
-<div class="category-grid" id="categoryGrid"></div>
+<div class="categories" id="categories"></div>
 <main id="menu"></main>
 
 <section class="contact">
-  <h2 id="contactTitle">Contact & Feedback</h2>
-
+  <h2 id="contactTitle">Contact & Links</h2>
   <div class="contact-buttons">
-    <a class="btn call" href="tel:+905313692933">📞 Call</a>
+    <a class="btn call" href="tel:+905313692933">📞 Call Us</a>
     <a class="btn wa" href="https://wa.me/905313692933" target="_blank">💬 WhatsApp</a>
-    <a class="btn review" href="https://search.google.com/local/writereview?placeid=ChIJHQ8tjZi3yhQRETskn37Cy0Q&utm_source=chatgpt.com" target="_blank">⭐ Review</a>
+    <a class="btn review" href="https://search.google.com/local/writereview?placeid=ChIJHQ8tjZi3yhQRETskn37Cy0Q&utm_source=chatgpt.com" target="_blank">⭐ Google Review</a>
     <a class="btn map" href="https://www.google.com/maps/search/?api=1&query=Anfield+Cafe+Pub+Istanbul" target="_blank">📍 Location</a>
     <a class="btn insta" href="https://www.instagram.com/anfield_cafepub/" target="_blank">📸 Instagram</a>
-  </div>
-
-  <div class="feedback">
-    <h3 id="feedbackTitle">Complaint / Suggestion / Compliment</h3>
-    <textarea id="feedbackText" placeholder="Write your message here..."></textarea>
-    <button class="send" id="feedbackBtn" onclick="sendFeedback()">Send on WhatsApp</button>
   </div>
 </section>
 
@@ -219,42 +100,16 @@ footer strong{color:var(--gold)}
 <a class="float-wa" href="https://wa.me/905313692933" target="_blank">WhatsApp</a>
 
 <script>
-const phone="905313692933";
 let lang="en";
-
 const ui={
-  en:{
-    title:"Anfield Cafe Pub",
-    welcome:"Welcome to Anfield Cafe Pub — food, drinks, shisha and great moments in Taksim.",
-    search:"Search in menu...",
-    contact:"Contact & Feedback",
-    feedback:"Complaint / Suggestion / Compliment",
-    placeholder:"Write your message here...",
-    send:"Send on WhatsApp"
-  },
-  ar:{
-    title:"أنفيلد كافيه باب",
-    welcome:"أهلاً بكم في أنفيلد — طعام، مشروبات، أرجيلة وأجواء رائعة في تقسيم.",
-    search:"ابحث في المنيو...",
-    contact:"التواصل والتقييم",
-    feedback:"شكوى / اقتراح / مدح",
-    placeholder:"اكتب رسالتك هنا...",
-    send:"إرسال على واتساب"
-  },
-  tr:{
-    title:"Anfield Cafe Pub",
-    welcome:"Anfield Cafe Pub’a hoş geldiniz — Taksim’de yemek, içecek, nargile ve keyifli anlar.",
-    search:"Menüde ara...",
-    contact:"İletişim ve Değerlendirme",
-    feedback:"Şikayet / Öneri / Teşekkür",
-    placeholder:"Mesajınızı buraya yazın...",
-    send:"WhatsApp ile gönder"
-  }
+ en:{title:"Anfield Cafe Pub",welcome:"Welcome to Anfield Cafe Pub — food, drinks, shisha and great moments in Taksim.",search:"Search in menu...",contact:"Contact & Links"},
+ ar:{title:"أنفيلد كافيه باب",welcome:"أهلاً بكم في أنفيلد — طعام، مشروبات، أرجيلة وأجواء رائعة في تقسيم.",search:"ابحث في المنيو...",contact:"التواصل والروابط"},
+ tr:{title:"Anfield Cafe Pub",welcome:"Anfield Cafe Pub’a hoş geldiniz — Taksim’de yemek, içecek, nargile ve keyifli anlar.",search:"Menüde ara...",contact:"İletişim ve Linkler"}
 };
 
 const menuData=[
 {id:"breakfast",img:"https://images.unsplash.com/photo-1533089860892-a7c6f0a88666?auto=format&fit=crop&w=800&q=80",names:{en:"Breakfast",ar:"الفطور",tr:"Kahvaltı"},items:[
-["English Breakfast","فطور إنجليزي","İngiliz Kahvaltısı","Eggs, sausage, beans, bread and sides.","بيض، نقانق، فاصوليا، خبز وإضافات.","Yumurta, sosis, fasulye ve ekmek.","Ask"],
+["English Breakfast","فطور إنجليزي","İngiliz Kahvaltısı","Eggs, sausage, beans and bread.","بيض، نقانق، فاصوليا وخبز.","Yumurta, sosis, fasulye ve ekmek.","Ask"],
 ["Turkish Breakfast","فطور تركي","Türk Kahvaltısı","Traditional Turkish breakfast plate.","طبق فطور تركي تقليدي.","Geleneksel Türk kahvaltısı.","Ask"],
 ["Menemen","مينيمن","Menemen","Eggs with tomato and pepper.","بيض مع طماطم وفلفل.","Domates ve biberli yumurta.","Ask"]
 ]},
@@ -263,124 +118,70 @@ const menuData=[
 ["Chicken Wings","أجنحة دجاج","Tavuk Kanat","Served with sauce.","تقدم مع الصوص.","Sos ile servis edilir.","Ask"],
 ["Mozzarella Sticks","أصابع موزاريلا","Mozzarella Çubukları","Fried mozzarella sticks.","أصابع موزاريلا مقلية.","Kızarmış mozzarella.","Ask"]
 ]},
-{id:"wraps",img:"https://images.unsplash.com/photo-1528735602780-2552fd46c7af?auto=format&fit=crop&w=800&q=80",names:{en:"Toast / Wraps",ar:"توست / راب",tr:"Tost / Wrap"},items:[
-["Chicken Wrap","راب دجاج","Tavuk Wrap","Chicken, vegetables and sauce.","دجاج، خضار وصوص.","Tavuk, sebze ve sos.","Ask"],
-["Cheese Toast","توست جبنة","Peynirli Tost","Toast with cheese.","توست مع الجبنة.","Peynirli tost.","Ask"],
-["Panini","بانيني","Panini","Grilled panini sandwich.","ساندويش بانيني مشوي.","Izgara panini sandviç.","Ask"]
-]},
 {id:"burgers",img:"https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=800&q=80",names:{en:"Burgers",ar:"البرغر",tr:"Burgerler"},items:[
 ["Classic Burger","برغر كلاسيك","Klasik Burger","Beef burger with fries.","برغر لحم مع بطاطا.","Patates ile dana burger.","Ask"],
 ["Chicken Burger","برغر دجاج","Tavuk Burger","Crispy chicken burger.","برغر دجاج مقرمش.","Çıtır tavuk burger.","Ask"],
-["Cheese Burger","تشيز برغر","Cheeseburger","Burger with cheese and fries.","برغر مع جبنة وبطاطا.","Peynirli burger ve patates.","Ask"]
+["Cheese Burger","تشيز برغر","Cheeseburger","Burger with cheese and fries.","برغر مع جبنة وبطاطا.","Peynirli burger.","Ask"]
 ]},
 {id:"pizza",img:"https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=800&q=80",names:{en:"Pizza & Pide",ar:"بيتزا وبيدا",tr:"Pizza ve Pide"},items:[
 ["Margherita Pizza","بيتزا مارغريتا","Margherita Pizza","Mozzarella and tomato sauce.","موزاريلا وصلصة طماطم.","Mozzarella ve domates sosu.","Ask"],
-["Pepperoni Pizza","بيتزا بيبروني","Pepperoni Pizza","Pepperoni and cheese.","بيبروني وجبنة.","Pepperoni ve peynir.","Ask"],
-["Turkish Pide","بيدا تركية","Türk Pidesi","Traditional Turkish pide.","بيدا تركية تقليدية.","Geleneksel Türk pidesi.","Ask"]
+["Pepperoni Pizza","بيتزا بيبروني","Pepperoni Pizza","Pepperoni and cheese.","بيبروني وجبنة.","Pepperoni ve peynir.","Ask"]
 ]},
 {id:"grill",img:"https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=800&q=80",names:{en:"Kebab & Grill",ar:"الكباب والمشاوي",tr:"Kebap ve Izgara"},items:[
 ["Adana Kebab","أضنة كباب","Adana Kebap","Served with rice and salad.","يقدم مع الأرز والسلطة.","Pilav ve salata ile.","Ask"],
-["Mixed Grill","مشاوي مشكلة","Karışık Izgara","Selection of grilled meats.","تشكيلة من المشاوي.","Karışık ızgara.","Ask"],
-["Grilled Chicken","دجاج مشوي","Izgara Tavuk","Served with rice and sauce.","مع أرز وصوص.","Pilav ve sos ile.","Ask"]
+["Mixed Grill","مشاوي مشكلة","Karışık Izgara","Selection of grilled meats.","تشكيلة من المشاوي.","Karışık ızgara.","Ask"]
 ]},
-{id:"desserts",img:"https://images.unsplash.com/photo-1551024506-0bccd828d307?auto=format&fit=crop&w=800&q=80",names:{en:"Desserts",ar:"الحلويات",tr:"Tatlılar"},items:[
-["Cheesecake","تشيز كيك","Cheesecake","Creamy cheesecake.","تشيز كيك كريمي.","Kremalı cheesecake.","Ask"],
-["Baklava","بقلاوة","Baklava","Pistachio baklava.","بقلاوة بالفستق.","Fıstıklı baklava.","Ask"],
-["Kunafa","كنافة","Künefe","Traditional sweet cheese dessert.","حلوى الجبنة التقليدية.","Peynirli tatlı.","Ask"]
-]},
-{id:"coffee",img:"https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=800&q=80",names:{en:"Coffee & Hot Drinks",ar:"القهوة والمشروبات الساخنة",tr:"Kahve ve Sıcak İçecekler"},items:[
+{id:"coffee",img:"https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=800&q=80",names:{en:"Coffee",ar:"القهوة",tr:"Kahve"},items:[
 ["Turkish Coffee","قهوة تركية","Türk Kahvesi","Traditional Turkish coffee.","قهوة تركية تقليدية.","Geleneksel Türk kahvesi.","Ask"],
-["Espresso","إسبريسو","Espresso","Strong Italian coffee.","قهوة إيطالية قوية.","Yoğun İtalyan kahvesi.","Ask"],
-["Latte","لاتيه","Latte","Coffee with milk.","قهوة مع الحليب.","Sütlü kahve.","Ask"],
-["Tea","شاي","Çay","Turkish tea.","شاي تركي.","Türk çayı.","Ask"]
-]},
-{id:"drinks",img:"https://images.unsplash.com/photo-1544145945-f90425340c7e?auto=format&fit=crop&w=800&q=80",names:{en:"Cold Drinks",ar:"مشروبات باردة",tr:"Soğuk İçecekler"},items:[
-["Soft Drinks","مشروبات غازية","Gazlı İçecekler","Cola, Fanta, Sprite.","كولا، فانتا، سبرايت.","Kola, Fanta, Sprite.","Ask"],
-["Fresh Juice","عصير طازج","Taze Meyve Suyu","Fresh seasonal juice.","عصير موسمي طازج.","Taze mevsim suyu.","Ask"],
-["Water","ماء","Su","Still water.","ماء.","Su.","Ask"]
+["Latte","لاتيه","Latte","Coffee with milk.","قهوة مع الحليب.","Sütlü kahve.","Ask"]
 ]},
 {id:"shisha",img:"https://images.unsplash.com/photo-1527661591475-527312dd65f5?auto=format&fit=crop&w=800&q=80",names:{en:"Shisha",ar:"الأرجيلة",tr:"Nargile"},items:[
 ["Double Apple","تفاحتين","Çift Elma","Classic flavor.","نكهة كلاسيكية.","Klasik aroma.","Ask"],
-["Love 66","لوف 66","Love 66","Popular mixed flavor.","نكهة مميزة ومشهورة.","Popüler aroma.","Ask"],
-["Mint","نعنع","Nane","Fresh mint flavor.","نكهة نعنع منعشة.","Ferah nane.","Ask"]
+["Love 66","لوف 66","Love 66","Popular mixed flavor.","نكهة مميزة.","Popüler aroma.","Ask"]
 ]},
 {id:"alcohol",img:"https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&w=800&q=80",names:{en:"Alcohol",ar:"مشروبات كحولية",tr:"Alkollü İçecekler"},items:[
 ["Beer","بيرة","Bira","Ask staff for available brands.","اسأل الموظف عن الأنواع المتوفرة.","Markalar için personele sorunuz.","Ask"],
-["Wine","نبيذ","Şarap","Ask staff for available options.","اسأل الموظف عن الخيارات المتوفرة.","Seçenekler için personele sorunuz.","Ask"],
 ["Cocktails","كوكتيلات","Kokteyller","Ask staff for cocktail menu.","اسأل الموظف عن قائمة الكوكتيلات.","Kokteyl menüsü için personele sorunuz.","Ask"]
 ]}
 ];
 
-function toItem(a){return{en:a[0],ar:a[1],tr:a[2],desc:{en:a[3],ar:a[4],tr:a[5]},price:a[6]};}
-
+function item(a){return{en:a[0],ar:a[1],tr:a[2],desc:{en:a[3],ar:a[4],tr:a[5]},price:a[6]}}
 function render(){
-  const cat=document.getElementById("categoryGrid");
-  const menu=document.getElementById("menu");
-  cat.innerHTML="";
-  menu.innerHTML="";
+ const cats=document.getElementById("categories"),menu=document.getElementById("menu");
+ cats.innerHTML="";menu.innerHTML="";
+ menuData.forEach((sec,i)=>{
+  const c=document.createElement("div");
+  c.className="cat"+(i===0?" active":"");
+  c.onclick=()=>show(sec.id,c);
+  c.innerHTML=<img src="${sec.img}"><span>${sec.names[lang]}</span>;
+  cats.appendChild(c);
 
-  menuData.forEach((sec,i)=>{
-    const c=document.createElement("div");
-    c.className="category-card"+(i===0?" active":"");
-    c.onclick=()=>show(sec.id,c);
-    c.innerHTML=`<img src="${sec.img}"><span>${sec.names[lang]}</span>`;
-    cat.appendChild(c);
-
-    const s=document.createElement("section");
-    s.className="section"+(i===0?" active":"");
-    s.id=sec.id;
-    s.innerHTML=`<h2>${sec.names[lang]}</h2><div class="items">${
-      sec.items.map(toItem).map(item=>`
-        <div class="item">
-          <div class="item-top">
-            <div class="name">${item[lang]}</div>
-            <div class="price">${item.price}</div>
-          </div>
-          <div class="desc">${item.desc[lang]}</div>
-        </div>
-      `).join("")
-    }</div>`;
-    menu.appendChild(s);
-  });
+  const s=document.createElement("section");
+  s.className="section"+(i===0?" active":"");s.id=sec.id;
+  s.innerHTML=<h2>${sec.names[lang]}</h2><div class="items">${sec.items.map(item).map(x=>
+    <div class="item"><div class="top"><div class="name">${x[lang]}</div><div class="price">${x.price}</div></div><div class="desc">${x.desc[lang]}</div></div>
+  ).join("")}</div>;
+  menu.appendChild(s);
+ });
 }
-
 function show(id,card){
-  document.querySelectorAll(".section").forEach(s=>s.classList.remove("active"));
-  document.getElementById(id).classList.add("active");
-  document.querySelectorAll(".category-card").forEach(c=>c.classList.remove("active"));
-  card.classList.add("active");
-  document.getElementById(id).scrollIntoView({behavior:"smooth",block:"start"});
+ document.querySelectorAll(".section").forEach(s=>s.classList.remove("active"));
+ document.getElementById(id).classList.add("active");
+ document.querySelectorAll(".cat").forEach(c=>c.classList.remove("active"));
+ card.classList.add("active");
 }
-
 function setLang(l,btn){
-  lang=l;
-  document.body.dir=l==="ar"?"rtl":"ltr";
-  document.getElementById("title").textContent=ui[l].title;
-  document.getElementById("welcome").textContent=ui[l].welcome;
-  document.getElementById("searchInput").placeholder=ui[l].search;
-  document.getElementById("contactTitle").textContent=ui[l].contact;
-  document.getElementById("feedbackTitle").textContent=ui[l].feedback;
-  document.getElementById("feedbackText").placeholder=ui[l].placeholder;
-  document.getElementById("feedbackBtn").textContent=ui[l].send;
-  document.querySelectorAll(".lang button").forEach(b=>b.classList.remove("active"));
-  btn.classList.add("active");
-  render();
+ lang=l;document.body.dir=l==="ar"?"rtl":"ltr";
+ title.textContent=ui[l].title;welcome.textContent=ui[l].welcome;
+ searchInput.placeholder=ui[l].search;contactTitle.textContent=ui[l].contact;
+ document.querySelectorAll(".lang button").forEach(b=>b.classList.remove("active"));
+ btn.classList.add("active");render();
 }
-
 function searchItems(){
-  const term=document.getElementById("searchInput").value.toLowerCase();
-  document.querySelectorAll(".item").forEach(item=>{
-    item.style.display=item.innerText.toLowerCase().includes(term)?"block":"none";
-  });
+ const term=searchInput.value.toLowerCase();
+ document.querySelectorAll(".item").forEach(i=>i.style.display=i.innerText.toLowerCase().includes(term)?"block":"none");
 }
-
-function sendFeedback(){
-  const msg=document.getElementById("feedbackText").value || "Hello Anfield Cafe Pub, I would like to send feedback about my experience.";
-  window.open("https://wa.me/"+phone+"?text="+encodeURIComponent(msg),"_blank");
-}
-
 render();
 </script>
-
 </body>
 </html>
