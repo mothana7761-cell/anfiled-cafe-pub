@@ -4,49 +4,39 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Anfield Cafe Pub Menu</title>
-
   <link rel="stylesheet" href="style.css" />
 </head>
-
 <body>
   <header class="hero">
-    <div class="hero-overlay">
-      <img src="logo.jpeg" class="logo" alt="Anfield Cafe Pub Logo" />
-
+    <div class="hero-content">
+      <img src="logo.jpeg" class="logo" />
       <h1 id="siteTitle">Anfield Cafe Pub</h1>
-      <p id="welcomeText">
-        Welcome to Anfield Cafe Pub — food, drinks, shisha and great moments in Taksim.
-      </p>
+      <p id="welcomeText">Welcome to Anfield Cafe Pub — food, drinks, shisha and great moments in Taksim.</p>
 
-      <div class="language-buttons">
-        <button class="active" onclick="setLanguage('en', this)">English</button>
-        <button onclick="setLanguage('ar', this)">العربية</button>
-        <button onclick="setLanguage('tr', this)">Türkçe</button>
+      <div class="langs">
+        <button class="active" onclick="setLang('en', this)">English</button>
+        <button onclick="setLang('ar', this)">العربية</button>
+        <button onclick="setLang('tr', this)">Türkçe</button>
       </div>
 
-      <div class="search-box">
-        <input id="searchInput" type="text" placeholder="Search in menu..." oninput="searchMenu()" />
-      </div>
+      <input id="searchInput" class="search" placeholder="Search in menu..." oninput="searchMenu()" />
     </div>
   </header>
 
-  <section class="categories-area">
+  <section class="category-section">
     <h2 id="categoryTitle">Menu Categories</h2>
     <div id="categoriesGrid" class="categories-grid"></div>
   </section>
 
-  <main id="menuContent" class="menu-content"></main>
+  <main id="menuContent"></main>
 
-  <section class="contact-section">
+  <section class="contact">
     <h2 id="contactTitle">Contact & Links</h2>
-
-    <div class="contact-list">
-      <a href="tel:+905313692933" class="contact-btn call">📞 Call Us</a>
-      <a href="https://wa.me/905313692933" target="_blank" class="contact-btn whatsapp">💬 WhatsApp</a>
-      <a href="https://search.google.com/local/writereview?placeid=ChIJHQ8tjZi3yhQRETskn37Cy0Q&utm_source=chatgpt.com" target="_blank" class="contact-btn review">⭐ Google Review</a>
-      <a href="https://www.google.com/maps/search/?api=1&query=Anfield+Cafe+Pub+Istanbul" target="_blank" class="contact-btn location">📍 Location</a>
-      <a href="https://www.instagram.com/anfield_cafepub/" target="_blank" class="contact-btn instagram">📸 Instagram</a>
-    </div>
+    <a class="btn call" href="tel:+905313692933">📞 Call Us</a>
+    <a class="btn wa" href="https://wa.me/905313692933" target="_blank">💬 WhatsApp</a>
+    <a class="btn review" href="https://search.google.com/local/writereview?placeid=ChIJHQ8tjZi3yhQRETskn37Cy0Q&utm_source=chatgpt.com" target="_blank">⭐ Google Review</a>
+    <a class="btn map" href="https://www.google.com/maps/search/?api=1&query=Anfield+Cafe+Pub+Istanbul" target="_blank">📍 Location</a>
+    <a class="btn insta" href="https://www.instagram.com/anfield_cafepub/" target="_blank">📸 Instagram</a>
   </section>
 
   <footer>
@@ -55,9 +45,7 @@
     +90 531 369 29 33
   </footer>
 
-  <a class="floating-whatsapp" href="https://wa.me/905313692933" target="_blank">
-    WhatsApp
-  </a>
+  <a class="float-wa" href="https://wa.me/905313692933" target="_blank">WhatsApp</a>
 
   <script src="data.js"></script>
   <script src="script.js"></script>
